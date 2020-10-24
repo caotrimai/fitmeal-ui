@@ -1,0 +1,25 @@
+.week-combo {
+    width: 100%;
+    background-color: #fff;
+    padding: 10px 10px 5px 10px;
+
+    &__title {
+        color: #c3332a;
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+
+        border-bottom: 1px solid #5b5b5b;
+        padding: 0px 10px 0px 10px;
+    }
+
+    &__col {
+        padding: 5px 10px 5px 10px;
+    }
+
+    .ant-cart-body {
+        padding: 10px 15px 0px 15px;
+        width: 258px;
+        height: 127px;
+    }
+}

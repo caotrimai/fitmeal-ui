@@ -1,0 +1,98 @@
+.cart-inner {
+    min-width: 1010px;
+    width: 100%;
+}
+
+.cart-products {
+    padding: 10px 0px 10px 0px;
+
+    &__title {
+        margin-top: 50px;
+        padding: 10px 0px 10px 0px;
+
+        background-color: #fff;
+        border-radius: 1px;
+        border: unset;
+        box-shadow: 0.3px 0.3px 1px #888888;
+
+        color: #999999;
+        font-size: 16px;
+        text-align: center;
+
+        &__color-black {
+            color: #000;
+        }
+        &__text-left {
+            text-align: left;
+        }
+    }
+
+    &__products {
+        margin-top: 20px;
+        padding: 10px 0px 10px 0px;
+
+        background-color: #fff;
+        border-radius: 1px;
+        border: unset;
+        box-shadow: 0.3px 0.3px 1px #888888;
+
+        color: #999999;
+        font-size: 16px;
+        text-align: center;
+
+        &__img img {
+            width: 108px;
+            height: 68px;
+        }
+
+        &__price {
+            color: #c3332a;
+        }
+
+        &__amount {
+            &--width-60px {
+                width: 60px;
+            }
+        }
+
+        &__manipulation {
+            color: #000;
+            cursor: pointer;
+        }
+
+        &__text-left {
+            text-align: left;
+        }
+    }
+
+    &__total-prices {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 10px 0px 10px 0px;
+
+        border-radius: 1px;
+        border: unset;
+        box-shadow: 0.3px 0.3px 1px #888888;
+
+        background-color: #fff;
+        color: #000;
+
+        &__text-left {
+            text-align: left;
+        }
+
+        &__color-#C3332A {
+            color: #c3332a;
+        }
+
+        &__purchase-btn button {
+            background-color: #ec7533;
+            border: unset;
+        }
+        &__purchase-btn button:hover,
+        &__purchase-btn button:focus {
+            background-color: #f5b43c;
+            border: unset;
+        }
+    }
+}

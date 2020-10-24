@@ -1,0 +1,52 @@
+.main-header {
+    height: 110px;
+    background-color: #c3332a;
+    min-width: 600px;
+    .main-content {
+        padding: 5px 10px 10px 10px;
+        .top-menu {
+            .ant-row {
+                justify-content: flex-end;
+                color: #fff;
+                font-size: 13px;
+                padding: 0px 0px 10px 0px;
+                .top-menu-item {
+                    color: #fff;
+                    padding: 0px 0px 0px 20px;
+                    cursor: pointer;
+                    &__my-menu-btn {
+                        background-color: #ec7533;
+                        border: unset;
+                    }
+                }
+            }
+        }
+        .search-input {
+            .ant-input-search-button :hover {
+                background-color: #ec7533;
+            }
+            .ant-btn-primary {
+                background-color: #c3332a;
+                border-color: #fff;
+            }
+        }
+        .logo-container {
+            padding: 10px 10px 10px 10px;
+        }
+    }
+}
+
+.link-separator {
+    border-right: 1px solid hsla(0, 0%, 100%, 0.4);
+    height: 0.8125rem;
+    padding: 0px 5px 0px 5px;
+}
+
+.dot-notification {
+}
+
+.cart-icon {
+    color: #fff;
+    font-size: 28px;
+    cursor: pointer;
+}

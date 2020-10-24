@@ -1,0 +1,16 @@
+.login-header {
+    display: block;
+    padding: 0px 0px 30px 0px;
+
+    .left {
+        float: left;
+        font-size: 16px;
+    }
+    .right {
+        float: right;
+        font-size: 14px;
+        .login {
+            color: #c3332a;
+        }
+    }
+}

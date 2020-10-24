@@ -1,0 +1,12 @@
+.register-form {
+    width: 100%;
+}
+
+.next-button {
+    border: none !important;
+    background-color: #ec7533 !important;
+    text-transform: uppercase !important;
+    &:hover {
+        background-color: #f5b43c !important;
+    }
+}

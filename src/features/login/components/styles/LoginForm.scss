@@ -1,0 +1,16 @@
+.login-form {
+    width: 100%;
+    .error-message {
+        color: #ff4d4f;
+        padding: 0px 0px 5px 0px;
+    }
+}
+
+.next-button {
+    border: none !important;
+    background-color: #ec7533 !important;
+    text-transform: uppercase !important;
+    &:hover {
+        background-color: #f5b43c !important;
+    }
+}

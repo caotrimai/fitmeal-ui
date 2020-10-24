@@ -1,0 +1,39 @@
+.seller-banner {
+    background-color: #fff;
+    width: 100%;
+
+    &-left {
+        &__img {
+            width: 106px;
+            height: 106px;
+        }
+    }
+    &-right {
+        &__name {
+        }
+        &__rating {
+            color: #ec7533;
+        }
+        &__btn-group {
+            width: 250px;
+            padding: 5px 0px 5px 0px;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            &__btn {
+                width: 120px;
+                background-color: #ec7533;
+                border-color: #ec7533;
+                text-align: center;
+            }
+
+            &__btn:hover,
+            &__btn:focus {
+                background-color: #f5b43c;
+                border-color: #f5b43c;
+            }
+        }
+    }
+}

@@ -1,0 +1,38 @@
+@mixin btn-wrapper($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin single-btn() {
+    width: 100%;
+    .btn-icon {
+        margin-left: -10px;
+        float: left;
+        font-size: 22px;
+    }
+}
+
+.login-btn-combo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+
+    .facebook-btn-wrapper {
+        @include btn-wrapper(215px, 40px);
+        padding: 0px 5px 0px 0px;
+
+        .single-btn {
+            @include single-btn();
+        }
+    }
+
+    .google-btn-wrapper {
+        @include btn-wrapper(215px, 40px);
+        padding: 0px 0px 0px 5px;
+
+        .single-btn {
+            @include single-btn();
+        }
+    }
+}

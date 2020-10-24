@@ -1,0 +1,22 @@
+.food-combo {
+    &__name {
+        color: #39393b;
+        text-align: center;
+        font-size: 16px;
+    }
+    &__price {
+        color: #c3332a;
+        text-align: center;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    &__description {
+        color: #999999;
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* number of lines to show */
+        -webkit-box-orient: vertical;
+    }
+}

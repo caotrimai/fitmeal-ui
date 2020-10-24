@@ -1,0 +1,35 @@
+.day-menu {
+    text-align: center;
+
+    margin-top: 10px;
+    padding: 10px 0px 10px 0px;
+    background-color: #fff;
+    box-shadow: 0.3px 0.3px 1px #888888;
+    border-radius: 3px;
+
+    .menu-date {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__wrapper {
+            background-color: #ec7533;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+        color: #fff;
+    }
+
+    .menu-food {
+        color: #39393b;
+
+        border-left: 1px solid #888888;
+    }
+}

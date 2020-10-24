@@ -1,0 +1,21 @@
+.product-menu {
+    padding: 10px 10px 10px 10px;
+}
+.product-menu-header {
+    background-color: #39393b;
+    padding: 10px 0px 10px 0px;
+
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+
+    .header-name {
+        &__color-yellow {
+            color: #ec7533;
+        }
+        &__border-left {
+            border-left: 1px solid #fff;
+        }
+    }
+}
