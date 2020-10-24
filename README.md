@@ -9,7 +9,6 @@ Github project: https://github.com/caotrimai/fit-meal.git
 yarn //to build yarn
 
 yarn start //start project
-
 ```
 
 1. Setup ReactJS app.
@@ -65,7 +64,7 @@ src
 |    	|__ reducer
 |    	|__ styles
 |    	|__ pages
-|    		  |__ index.js
+|    		|__ index.js
 |
 |__ public
 |  |__ locales
