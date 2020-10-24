@@ -4,6 +4,14 @@ Setup environment
 
 Github project: https://github.com/caotrimai/fit-meal.git
 
+0. Strat project
+```
+yarn //to build yarn
+
+yarn start //start project
+
+```
+
 1. Setup ReactJS app.
 https://create-react-app.dev/docs/getting-started/
 
@@ -57,7 +65,7 @@ src
 |    	|__ reducer
 |    	|__ styles
 |    	|__ pages
-|    		|__ index.js
+|    		  |__ index.js
 |
 |__ public
 |  |__ locales
