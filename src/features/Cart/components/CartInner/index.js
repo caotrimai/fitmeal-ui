@@ -1,112 +1,126 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useSelector, useDispatch } from 'react-redux';
-import { vndFormatter } from 'common/constant/currencyFormater';
+import React, {useState} from 'react';
+import {useTranslation} from 'react-i18next';
+import {useSelector, useDispatch} from 'react-redux';
+import {vndFormatter} from 'common/constant/currencyFormater';
 
-import { fetchByCartIds } from 'common/service/productService'
-import { save as saveOrder } from 'app/thunks/orderThunk'
+import {fetchByCartIds} from 'common/service/productService'
+import {save as saveOrder} from 'app/thunks/orderThunk'
+
 import CartProduct from './CartProduct'
-
 import 'features/Cart/styles/CartInner.scss'
-import { Row, Col, Button, Modal, Alert } from 'antd';
-
+import {Row, Col, Button, Modal, Alert} from 'antd';
+import {NavLink} from "react-router-dom";
 
 
 function CartInner(props) {
-    const dispatch = useDispatch();
-    const { t } = useTranslation();
-    const cartItems = useSelector(state => state.cart.items);
-    const currentUser = useSelector(state => state.authen.currentUser);
-    const cartProducts = fetchByCartIds(cartItems);
-    const totalPrice = useSelector(state => state.cart.totalPrice);
-    const [isShowConfirmPurchases, setShowConfirmPurchases] = useState(false);
-    const [modalErrMessage, setModalErrMessage] = useState('');
-    const [visibleErrorModal, setVisibleErrorModal] = useState(false);
+  const dispatch = useDispatch();
+  const {t} = useTranslation();
+  const cartItems = useSelector(state => state.cart.items);
+  const user = useSelector(state => state.account.user);
+  const cartProducts = fetchByCartIds(cartItems);
+  const totalPrice = useSelector(state => state.cart.totalPrice);
+  const [isShowConfirmPurchases, setShowConfirmPurchases] = useState(false);
+  const [modalErrMessage, setModalErrMessage] = useState('');
+  const [visibleErrorModal, setVisibleErrorModal] = useState(false);
 
-    const showConfirmPurchases = () => {
-        if (!currentUser) {
-            setModalErrMessage('Please login first');
-            showErrorModal();
-        } else {
-            setShowConfirmPurchases(true);
-        }
+  const showConfirmPurchases = () => {
+    if (!user) {
+      setModalErrMessage('Please login first');
+      showErrorModal();
+    } else {
+      setShowConfirmPurchases(true);
     }
+  }
 
-    const handleConfirmPurchasesOk = e => {
-        const order = { cartOdered: cartItems, totalPrice, userId: currentUser.id };
-        dispatch(saveOrder(order))
+  const handleConfirmPurchasesOk = e => {
+    const order = {cartOdered: cartItems, totalPrice, userId: user.id};
+    dispatch(saveOrder(order))
+    setShowConfirmPurchases(false);
+  }
 
-        setShowConfirmPurchases(false);
-    }
+  const handleConfirmPurchasesCancel = e => {
+    setShowConfirmPurchases(false);
+  }
 
-    const handleConfirmPurchasesCancel = e => {
-        setShowConfirmPurchases(false);
-    }
+  const showErrorModal = () => {
+    setVisibleErrorModal(true)
+  }
+  const handleErrorOk = e => {
+    setVisibleErrorModal(false)
+  };
 
-    const showErrorModal = () => {
-        setVisibleErrorModal(true)
-    }
-    const handleErrorOk = e => {
-        setVisibleErrorModal(false)
-    };
+  const handleErrorCancel = e => {
+    setVisibleErrorModal(false)
+  };
 
-    const handleErrorCancel = e => {
-        setVisibleErrorModal(false)
-    };
+  const renderCartBody = () => (
+    <Col>
+      <Row className='title'>
+        <Col span={1}/>
+        <Col span={15}
+             className='title__color-black title__text-left'
+        >{t('Product')}</Col>
+        <Col span={2}>{t('Unit price')}</Col>
+        <Col span={2}>{t('Amount')}</Col>
+        <Col span={2}>{t('Price')}</Col>
+        <Col span={2}>{t('Manipulation')}</Col>
+      </Row>
 
-    return (
-        <div className='cart-inner'>
-            <Col>
-                <Row className='cart-products__title'>
-                    <Col span={1}></Col>
-                    <Col span={15}
-                        className='cart-products__title__color-black
-                                    cart-products__title__text-left'
-                    >{t('Product')}</Col>
-                    <Col span={2}>{t('Unit price')}</Col>
-                    <Col span={2}>{t('Amount')}</Col>
-                    <Col span={2}>{t('Price')}</Col>
-                    <Col span={2}>{t('Manipulation')}</Col>
-                </Row>
+      {cartProducts.map(product => <CartProduct product={product} cartItems={cartItems} key={product.cartItemId}/>)}
 
-                {cartProducts.map(product => <CartProduct product={product} cartItems={cartItems} key={product.cartItemId} />)}
+      <Row className='total-prices'>
+        <Col span={1}/>
+        <Col span={17} className='total-prices__text-left'>  {t('Select all')}</Col>
+        <Col span={2}> {t('Total money')}</Col>
+        <Col span={2} className='total-prices__color-#C3332A'> {vndFormatter(totalPrice)}</Col>
+        <Col span={2} className='total-prices__purchase-btn'>
+          <Button type="primary" onClick={showConfirmPurchases}>{t('Purchase')}</Button>
+        </Col>
 
-                <Row className='cart-products__total-prices'>
-                    <Col span={1}></Col>
-                    <Col span={17} className='cart-products__total-prices__text-left'>  {t('Select all')}</Col>
-                    <Col span={2} > {t('Total money')}</Col>
-                    <Col span={2} className='cart-products__total-prices__color-#C3332A'> {vndFormatter(totalPrice)}</Col>
-                    <Col span={2} className='cart-products__total-prices__purchase-btn'> <Button type="primary" onClick={showConfirmPurchases}>{t('Purchase')}</Button></Col>
+        <Modal
+          title={t('Purchase confirm')}
+          visible={isShowConfirmPurchases}
+          onOk={handleConfirmPurchasesOk}
+          onCancel={handleConfirmPurchasesCancel}
+        >
+          <p>{t('Purchase confirm')}</p>
+        </Modal>
 
-                    <Modal
-                        title={t('Purchase confirm')}
-                        visible={isShowConfirmPurchases}
-                        onOk={handleConfirmPurchasesOk}
-                        onCancel={handleConfirmPurchasesCancel}
-                    >
-                        <p>{t('Purchase confirm')}</p>
-                    </Modal>
+        <Modal
+          className="error-modal"
+          width='fit-content'
+          closable={false}
+          header={null}
+          visible={visibleErrorModal}
+          onOk={handleErrorOk}
+          onCancel={handleErrorCancel}
+        >
+          < Alert
+            message="Error"
+            description={modalErrMessage}
+            type="error"
+            showIcon
+          />
+        </Modal>
+      </Row>
+    </Col>
+  )
 
-                    <Modal
-                        className="error-modal"
-                        width='fit-content'
-                        closable={false}
-                        header={null}
-                        visible={visibleErrorModal}
-                        onOk={handleErrorOk}
-                        onCancel={handleErrorCancel}
-                    >
-                        < Alert
-                            message="Error"
-                            description={modalErrMessage}
-                            type="error"
-                            showIcon
-                        />
-                    </Modal>
-                </Row>
-            </Col>
-        </div>
-    );
+  const renderNoItems = () => (
+    <div className="no-items">
+      <div className="no-items-icon"/>
+      <div className="text">{t('Your shopping cart is empty.')}</div>
+      <NavLink to="/my-menu" exact="/my-menu"><span className="top-menu-item" size="small">
+            <Button type="primary">{t('Continue shopping')}</Button></span>
+      </NavLink>
+    </div>
+  )
+
+  return (
+    <div className='CartInner'>
+      {cartProducts.length > 0 ? renderCartBody() : renderNoItems()}
+    </div>
+  );
 }
 
 export default CartInner;

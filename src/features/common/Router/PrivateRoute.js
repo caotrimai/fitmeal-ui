@@ -8,7 +8,7 @@ import { setReferrer } from 'app/reducers/locationSlice'
 function PrivateRoute({ component: Component, exact, path, strict, ...props }) {
     const dispatch = useDispatch();
 
-    const isLoggedIn = useSelector(state => state.authen.loggedIn);
+    const isLoggedIn = useSelector(state => state.account.loggedIn);
     let currentLocation = window.location.pathname;
     if (isLoggedIn) currentLocation = '/'
     dispatch(setReferrer(currentLocation));

@@ -18,7 +18,7 @@ function LoginForm(props) {
     const dispatch = useDispatch();
     const { t } = useTranslation();
 
-    const isLoggedIn = useSelector(state => state.authen.loggedIn);
+    const isLoggedIn = useSelector(state => state.account.loggedIn);
     const referrer = useSelector(state => state.location.referrer);
     const loginError = useSelector(state => state.login.loginError);
 

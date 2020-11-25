@@ -1,4 +1,4 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { register, login } from '../thunks/userThunk'
 import userService from "common/service/userService";
 
@@ -22,7 +22,7 @@ const userSlice = createSlice({
     extraReducers: {
         [register.pending]: (state, action) => { state.register = 'pending' },
         [register.fulfilled]: (state, action) => {
-            state.currentUser = action.payload;
+            state.user = action.payload;
             state.register = 'done';
             state.users = userService.fetchAll();
             // set another states

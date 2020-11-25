@@ -4,22 +4,22 @@ import { register, login } from '../thunks/userThunk'
 
 const initialState = {
     loggedIn: false,
-    currentUser: null,
+    user: null,
 };
 
-const authenticationSlice = createSlice({
-    name: "authentication",
-    slice: "authenticationSlice",
+const AccountSlice = createSlice({
+    name: "account",
+    slice: "accountSlice",
     initialState: initialState,
     reducers: {
     },
     extraReducers: {
         [login.fulfilled]: (state, action) => {
-            state.currentUser = action.payload;
+            state.user = action.payload;
             state.loggedIn = true;
         },
         [register.fulfilled]: (state, action) => {
-            state.currentUser = action.payload;
+            state.user = action.payload;
             state.loggedIn = true;
         },
     }
@@ -27,7 +27,7 @@ const authenticationSlice = createSlice({
 
 
 // Extract the action creators object and the reducer
-const { actions, reducer } = authenticationSlice;
+const { actions, reducer } = AccountSlice;
 
 // Extract and export each action creator by name
 export const { } = actions;

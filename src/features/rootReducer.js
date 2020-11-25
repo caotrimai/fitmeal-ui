@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 
 //common reducers
-import authen from 'app/reducers/authenticationSlice'
+import account from 'app/reducers/accountSlice'
 import location from 'app/reducers/locationSlice'
 import language from 'app/reducers/languageSlice'
 import cart from 'app/reducers/cartSlice'
@@ -15,7 +15,7 @@ import login from 'features/login/reducer/loginSlice'
 
 
 export default combineReducers({
-    authen,
+    account,
     location,
     language,
     cart,

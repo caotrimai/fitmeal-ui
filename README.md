@@ -4,7 +4,7 @@ Setup environment
 
 Github project: https://github.com/caotrimai/fit-meal.git
 
-0. Strat project
+0. Start project
 ```
 yarn //to build yarn
 

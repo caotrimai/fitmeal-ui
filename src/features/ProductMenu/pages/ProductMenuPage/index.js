@@ -12,7 +12,7 @@ import ProductMenuBody from '../ProductMenuBody';
 
 function ProductMenuPage(props) {
     const { t } = useTranslation();
-    const currentUser = useSelector(state => state.authen.currentUser);
+    const user = useSelector(state => state.account.user);
     const [weekMenu, setWeekMenu] = useState([])
 
     const getDateFromWeek = (year, week) => {
@@ -25,7 +25,7 @@ function ProductMenuPage(props) {
         const year = dateString.substring(0, 4);
         const week = dateString.substring(5, 7);
         const time = getDateFromWeek(year, week);
-        const weekMenu = filterUserProductMenu(currentUser.id, 1, time.fromDate, time.toDate);
+        const weekMenu = filterUserProductMenu(user.id, 1, time.fromDate, time.toDate);
         setWeekMenu(weekMenu);
     }
 

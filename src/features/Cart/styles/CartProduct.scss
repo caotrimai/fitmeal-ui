@@ -1,0 +1,37 @@
+.CartProduct {
+  margin-top: 20px;
+  padding: 10px 0px 10px 0px;
+
+  background-color: #fff;
+  border-radius: 1px;
+  border: unset;
+  box-shadow: 0.3px 0.3px 1px #888888;
+
+  color: #999999;
+  font-size: 16px;
+  text-align: center;
+
+  .img img {
+    width: 108px;
+    height: 68px;
+  }
+
+  .price {
+    color: #c3332a;
+  }
+
+  .amount {
+    &--width-60px {
+      width: 60px;
+    }
+  }
+
+  .manipulation {
+    color: #000;
+    cursor: pointer;
+  }
+
+  .text-left {
+    text-align: left;
+  }
+}

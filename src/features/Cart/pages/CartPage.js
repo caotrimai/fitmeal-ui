@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Row, Col } from 'antd';
+import { Row } from 'antd';
 import 'antd/dist/antd.css';
 import 'features/Cart/styles/CartPage.scss';
 import CartInner from '../components/CartInner';

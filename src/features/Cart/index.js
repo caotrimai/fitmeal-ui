@@ -12,10 +12,8 @@ function Cart(props) {
 
     return (
         <Switch>
-
             <Route exact path={`${match.url}`}
                 render={({ match }) => <CartPage match={match} />} />
-
             <Route component={NotFound} />
         </Switch>
     );
