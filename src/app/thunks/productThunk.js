@@ -9,9 +9,7 @@ export const fetchAllFoodCombos = createAsyncThunk(
     //thunkAPI of createAsyncThunk, to dispatch other actions
     // ex: thunkAPI.dispatch(...)
     try {
-      const response = await productServiceLocal.fetchAllFoodMenu();
-      console.log(response);
-      return response;
+      return await productServiceLocal.fetchAllFoodMenu();
     } catch (error) {
       console.log(error);
       throw error;

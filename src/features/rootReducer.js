@@ -15,14 +15,26 @@ import login from 'features/login/reducer/loginSlice'
 
 
 export default combineReducers({
-    account,
-    location,
-    language,
-    cart,
-    order,
-    user,
-    foodCombo,
+  account,
+  location,
+  language,
+  cart,
+  order,
+  user,
+  foodCombo,
 
-    register,
-    login,
+  register,
+  login,
 })
+
+export const reducers = {
+  account,
+  location,
+  language,
+  cart,
+  order,
+  user,
+  foodCombo,
+  register,
+  login,
+}
