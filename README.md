@@ -1,35 +1,42 @@
+
 Fit Meal App
 
 Setup environment
 
 Github project: https://github.com/caotrimai/fit-meal.git
 
-0. Start project
+1. Start project
 ```
 yarn //to build yarn
+
+yarn install // to install the packages
 
 yarn start //start project
 ```
 
-1. Setup ReactJS app.
+2. Setup ReactJS app.
+
 https://create-react-app.dev/docs/getting-started/
 
-2. Add SCSS support
+3. Modules & libraries
 ```
-npm i --save-dev node-sass
+currency-formatter
+i18next
+lodash
+moment
+
+react-hook
+react-hook-form
+react-redux
+redux-persist
+@reduxjs/toolkit
+react-router-dom
+
+node-sass
+antd (ant design)
 ```
 
-3. Add react router
-```
-npm i --save react-router-dom
-```
-
-4. Add UI lib
-```
-npm install antd
-```
-
-5. Structure folder
+4. Structure folder
 ```
 src
 |__ assets
@@ -93,7 +100,7 @@ function App() {
 }
 ```
 
-5. react-i18next
+6. react-i18next
 - create i18n.js to start configuring react-i18next.
 - import i18n.js into root component.
 - in sub-components, use react-i18next:

@@ -50,14 +50,14 @@ function ProductDetail(props) {
   const addToCart = () => {
     weekSelected = document.getElementById("datePicker").value;
     if (!user) {
-      setModalErrMessage('Please login first');
+      setModalErrMessage(t('Please login first'));
       showModal();
     } else if (weekSelected) {
       const newProducts = addProductToCart(product.id, cartItems, weekSelected, user.id);
       // const newProducts = { productId: product.id, weekSelected, userId: user.id };
       dispatch(setProducts(newProducts));
     } else {
-      setModalErrMessage('Please select week')
+      setModalErrMessage(t('Please select week'))
       showModal();
     }
   }

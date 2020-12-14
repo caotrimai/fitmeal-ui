@@ -51,5 +51,7 @@
   "Address": "Địa chỉ",
   "Phone": "Số điện thoại",
   "Email": "Email",
-  "Tax": "MST"
+  "Tax": "MST",
+  "Please select week": "Vui lòng chọn tuần ăn",
+  "Please login first": "Vui lòng đăng nhập"
 }

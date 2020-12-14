@@ -51,5 +51,7 @@
   "Address": "Address",
   "Phone": "Phone",
   "Email": "Email",
-  "Tax": "Address"
+  "Tax": "Address",
+  "Please select week": "Please select week",
+  "Please login first": "Please login first"
 }

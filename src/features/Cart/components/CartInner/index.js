@@ -73,7 +73,7 @@ function CartInner(props) {
         <Col span={17} className='total-prices__text-left'>  {t('Select all')}</Col>
         <Col span={2}> {t('Total money')}</Col>
         <Col span={2} className='total-prices__color-#C3332A'> {vndFormatter(totalPrice)}</Col>
-        <Col span={2} className='total-prices__purchase-btn'>
+        <Col span={2} className='purchase-btn'>
           <Button type="primary" onClick={showConfirmPurchases}>{t('Purchase')}</Button>
         </Col>
 
