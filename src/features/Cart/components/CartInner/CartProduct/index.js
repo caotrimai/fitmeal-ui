@@ -41,7 +41,7 @@ function CartProduct(props) {
   return (
     <Row className='CartProduct'>
       <Col span={1} />
-      <Col span={3} className='img'> <img src={product.img} /> </Col>
+      <Col span={3} className='img'> <img src={product.img} alt='cart-product-img'/> </Col>
       <Col span={12} className='content text-left' >  {product.name}</Col>
       <Col span={2} className='unit-price'> {vndFormatter(product.price)}</Col>
       <Col span={2} className='amount'> <InputNumber className='cart-products__products__amount--width-60px' size='small' min={1} max={10} value={product.amount} defaultValue={1} onChange={setAmount} /></Col>

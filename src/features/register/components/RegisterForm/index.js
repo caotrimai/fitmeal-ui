@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import { useForm, Controller } from "react-hook-form";
 import { useDispatch } from 'react-redux'
 
-import { setVisibleRegForm } from 'features/register/reducer/registerSlice'
 import { register } from 'app/thunks/userThunk'
 import { checkPhoneIsExists } from 'common/service/userService'
 
@@ -24,7 +23,6 @@ function RegisterForm(props) {
 
     const [phoneInputValue, setPhoneInputValue] = useState('');
     const debouncedPhone = useDebounce(phoneInputValue, 2000);
-    const [isSearching, setIsSearching] = useState(false);
     const [phoneErrExists, setPhoneErrExists] = useState(false);
 
     const { control, errors, handleSubmit, setValue, watch } = useForm();
@@ -45,15 +43,13 @@ function RegisterForm(props) {
 
 
     async function isPhoneExists(phone) {
-        return await checkPhoneIsExists(phone);
+        return checkPhoneIsExists(phone);
     }
 
     useEffect(
         () => {
             if (debouncedPhone) {
-                setIsSearching(true);
                 isPhoneExists(debouncedPhone).then(results => {
-                    setIsSearching(false);
                     const isExists = results.data ? 'SDT này đã tồn tại' : false;
                     setPhoneErrExists(isExists);
                 });
@@ -66,10 +62,6 @@ function RegisterForm(props) {
         dispatch(register(data));
     };
 
-    const handlePhoneInput = (e) => {
-        console.log(e.target.value);
-
-    }
     const PhoneInput = (
         <Form.Item>
             <Input

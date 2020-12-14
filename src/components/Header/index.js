@@ -22,7 +22,7 @@ import {
 
 function Header(props) {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.account.user);
+  const {user} = useSelector(state => state.account);
   const visibleRegForm = useSelector(state => state.register.visibleRegForm);
   const visibleLoginForm = useSelector(state => state.login.visibleLoginForm);
   const cart = useSelector(state => state.cart);
@@ -66,12 +66,11 @@ function Header(props) {
   const TopMenu = () => {
     return (
       <div>
-        <NavLink to="/"><label className="top-menu-item"><NotificationOutlined/> {t('Notification')}</label></NavLink>
+        <label className="top-menu-item"><NotificationOutlined/> {t('Notification')}</label>
         <label className="top-menu-item"><QuestionCircleOutlined/> {t('Help')}</label>
         {user && <span className="top-menu-item" size="small"> <UserOutlined/> {user.phone}</span>}
-        {user
-        && <NavLink to="/my-menu" exact="/my-menu"><span className="top-menu-item" size="small">
-            <Button className="top-menu-item__my-menu-btn" type="primary">{t('My menu')}</Button></span>
+        {user && <NavLink to="/my-menu" exact={true}><span className="top-menu-item" size="small">
+            <Button className="my-menu-btn" type="primary">{t('My menu')}</Button></span>
         </NavLink>}
 
         {!user && <label className="top-menu-item" onClick={showLoginForm}>{t('Login')}</label>}
@@ -111,7 +110,7 @@ function Header(props) {
 
 
   return (
-    <div className="main-header">
+    <div className="Header">
       <Row>
         <Col xs={0} sm={0} md={0} lg={0} xl={3}/>
         <Col xs={24} sm={24} md={24} lg={24} xl={18}

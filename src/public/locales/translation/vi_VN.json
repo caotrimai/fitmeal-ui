@@ -46,5 +46,10 @@
   "Saturday": "T7",
   "Sunday": "CN",
   "Delete": "Xóa",
-  "Your shopping cart is empty.": "Không có sản phẩm nào trong giỏ hàng."
+  "Your shopping cart is empty.": "Không có sản phẩm nào trong giỏ hàng.",
+  "footer_company_title": "CÔNG TY TNHH FITMEAL",
+  "Address": "Địa chỉ",
+  "Phone": "Số điện thoại",
+  "Email": "Email",
+  "Tax": "MST"
 }

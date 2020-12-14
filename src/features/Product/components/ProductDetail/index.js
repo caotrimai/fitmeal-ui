@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {useSelector} from 'react-redux';
 import {useTranslation} from 'react-i18next';
 
-import {Row, Col, Carousel, Button, DatePicker, Alert, Modal} from 'antd';
+import {Row, Col, Carousel, Button, DatePicker, Modal} from 'antd';
 
 import {setProducts} from 'app/reducers/cartSlice'
 
@@ -38,6 +38,7 @@ function ProductDetail(props) {
   const user = useSelector(state => state.account.user);
   const [visibleErrorModal, setVisibleErrorModal] = useState(false);
   const [modalErrMessage, setModalErrMessage] = useState('');
+  const [visibleReviewModal, setVisibleReviewModal] = useState(false);
   const {t} = useTranslation();
 
   let weekSelected = null;
@@ -69,26 +70,50 @@ function ProductDetail(props) {
     setVisibleErrorModal(false)
   };
 
-  const handleCancel = e => {
-    setVisibleErrorModal(false)
-  };
+  const errorModal = () => (
+    <Modal
+      className="error-modal"
+      width='fit-content'
+      closable={false}
+      header={null}
+      visible={visibleErrorModal}
+      onOk={handleOk}
+      cancelButtonProps={{ style: { display: 'none' } }}
+    >
+      {modalErrMessage}
+    </Modal>
+  )
 
-
+  const reviewModal = () =>(
+    <Modal
+      className='review-modal'
+      header={null}
+      footer={null}
+      visible={visibleReviewModal}
+      closeIcon={(<div onClick={() => setVisibleReviewModal(false)}> Close</div>)}
+    >
+      <Carousel autoplay={false}>
+        <img src={Picture1} alt="RedexpressBanner"/>
+        <img src={Picture2} alt="RedexpressBanner"/>
+      </Carousel>
+    </Modal>
+  )
+  
   return (
-    <Row className="product-detail">
-      <Col span={8} className="product-detail-left">
+    <Row className="ProductDetail">
+      <Col span={8} className="left">
         <Carousel autoplay>
-          <div>
-            <img src={Picture1} className="product-detail-left__img" alt="RedexpressBanner"/>
+          <div onClick={() => setVisibleReviewModal(true)}>
+            <img src={Picture1} alt="RedexpressBanner"/>
           </div>
-          <div>
-            <img src={Picture2} className="product-detail-left__img" alt="RedexpressBanner"/>
+          <div onClick={() => setVisibleReviewModal(true)}>
+            <img src={Picture2} alt="RedexpressBanner"/>
           </div>
         </Carousel>
       </Col>
-      <Col span={16} className="product-detail-right">
-        <div className="product-detail-right__name">{product.name}</div>
-        <div className="product-detail-right__price">{product.price}đ</div>
+      <Col span={16} className="right">
+        <div className="name">{product.name}</div>
+        <div className="price">{product.price}đ</div>
 
         <DatePicker id="datePicker" onChange={onWeekChange} picker="week"/>
         <div className="add-to-cart">
@@ -101,27 +126,13 @@ function ProductDetail(props) {
             {t('Add to cart')}
           </Button>
         </div>
-        <div className="product-detail-right__description">
+        <div className="description">
           {product.description}
         </div>
       </Col>
 
-      <Modal
-        className="error-modal"
-        width='fit-content'
-        closable={false}
-        header={null}
-        visible={visibleErrorModal}
-        onOk={handleOk}
-        onCancel={handleCancel}
-      >
-        < Alert
-          message="Error"
-          description={modalErrMessage}
-          type="error"
-          showIcon
-        />
-      </Modal>
+      {errorModal()}
+      {reviewModal()}
     </Row>
   );
 }

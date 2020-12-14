@@ -1,37 +1,25 @@
-import { createStore, combineReducers } from 'redux';
-import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-import { reducers } from './rootReducer'
+import {createStore} from 'redux';
+import {persistStore, persistReducer} from 'redux-persist';
+import {createBlacklistFilter} from 'redux-persist-transform-filter';
+import storage from 'redux-persist/lib/storage';
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import rootReducer from './rootReducer';
 
+const blacklistFilter = createBlacklistFilter('user', ['users']);
 
 const rootPersistConfig = {
   key: 'root',
   version: 1,
-  storage
+  storage: storage,
+  stateReconciler: autoMergeLevel2,
+  whitelist: [
+    'account',
+    'cart',
+    'language',
+    'location'
+  ],
+  transform: [blacklistFilter]
 }
-const normalPersistConfig = {
-  key: 'root',
-  storage
-}
-const userPersistConfig = {
-  key: 'user',
-  version: 1,
-  storage,
-  blacklist: ['users']
-}
-
-const rootReducer = combineReducers({
-  user: persistReducer(userPersistConfig, reducers.user),
-  account: reducers.account,
-  location: reducers.location,
-  language: reducers.language,
-  cart: reducers.cart
-  // account: persistReducer(normalPersistConfig, account),
-  // location: persistReducer(normalPersistConfig, location),
-  // language: persistReducer(normalPersistConfig, language),
-  // cart: persistReducer(normalPersistConfig, cart),
-});
 
 const persistedReducer = persistReducer(rootPersistConfig, rootReducer)
 

@@ -29,24 +29,23 @@ function RootRouter(props) {
         <BrowserRouter>
           <Header/>
           <Row>
-            <Col xs={0} sm={0} md={0} lg={0} xl={3}></Col>
+            <Col xs={0} sm={0} md={0} lg={0} xl={3} />
             <Col xs={24} sm={24} md={24} lg={24} xl={18} className="main-content">
               <Switch>
                 <Redirect from="/home" to="/"/>
-                <Route exact path="/" component={HomePage}/>
-                <Route exact path="/login" component={LoginPage}/>
-                <Route path="/login" component={Login}/>
-                <Route path="/register" component={Register}/>
-                <Route path="/p" component={Product}/>
-                {/* <Route path="/cart" component={Cart} /> */}
+                <PrivateRoute exact path="/" component={HomePage}/>
+                <PrivateRoute path="/login" component={Login}/>
+                <PrivateRoute path="/register" component={Register}/>
+                <PrivateRoute path="/p" component={Product}/>
 
+                <PrivateRoute exact path="/login" component={LoginPage}/>
                 <PrivateRoute path="/my-menu" component={ProductMenu}/>
                 <PrivateRoute path="/cart" component={Cart}/>
 
                 <Route component={NotFound}/>
               </Switch>
             </Col>
-            <Col xs={0} sm={0} md={0} lg={0} xl={3}></Col>
+            <Col xs={0} sm={0} md={0} lg={0} xl={3} />
           </Row>
           <PageFooter/>
         </BrowserRouter>

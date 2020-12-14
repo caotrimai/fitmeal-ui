@@ -12,6 +12,13 @@ export const userData = [{
   "phone": "951-144-6789",
   "gender": "Male",
   "password": "111111"
+},{
+  "id": "mct",
+  "first_name": "Trí",
+  "last_name": "Mai Cao",
+  "phone": "0999999999",
+  "gender": "Male",
+  "password": "111111"
 }, {
 }, {
   "id": "cguitel1",
