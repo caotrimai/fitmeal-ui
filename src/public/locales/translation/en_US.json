@@ -53,5 +53,9 @@
   "Email": "Email",
   "Tax": "Address",
   "Please select week": "Please select week",
-  "Please login first": "Please login first"
+  "Please login first": "Please login first",
+  "My account": "My account",
+  "Orders": "Orders",
+  "Logout": "Logout",
+  "General term": "General term"
 }

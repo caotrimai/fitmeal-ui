@@ -4,6 +4,7 @@ import {Path} from 'common/constant/path'
 import {useSelector, useDispatch} from 'react-redux'
 import {setReferrer} from 'app/reducers/locationSlice'
 
+const LoginPage = React.lazy(() => import('features/login/pages/LoginPage'));
 
 function PrivateRoute({component: Component, exact, path, strict, ...props}) {
   const dispatch = useDispatch();
@@ -13,13 +14,25 @@ function PrivateRoute({component: Component, exact, path, strict, ...props}) {
   if (isLoggedIn) currentLocation = '/'
   dispatch(setReferrer(currentLocation));
 
-  return (!isLoggedIn ?
-      <Redirect to={{pathname: Path.login}} />
-      : (
-          path === Path.login && isLoggedIn ? <Redirect to={referrer}/>
-          : <Route {...props} component={Component} exact={exact} strict={strict} path={path} />
-      )
-  )
+  if(!isLoggedIn){
+    return <Route exact path="/login" component={LoginPage}/>
+  }else{
+    if(path.includes(Path.login)){
+      return <Redirect to='/'/>
+    }else {
+      return referrer ? <Redirect to={referrer}/> :
+        <Route {...props} component={Component} exact={exact} strict={strict} path={path}/>
+    }
+  }
+  
+  // return (!isLoggedIn ?
+  //     <Redirect to={{pathname: Path.login}}/>
+  //     : (
+  //       path.includes.includes(Path.login) ?
+  //         <Redirect to='/'/> : (referrer ? <Redirect to={referrer}/> :
+  //         <Route {...props} component={Component} exact={exact} strict={strict} path={path}/>)
+  //     )
+  // )
 }
 
 export default PrivateRoute;

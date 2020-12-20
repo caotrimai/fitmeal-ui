@@ -53,5 +53,9 @@
   "Email": "Email",
   "Tax": "MST",
   "Please select week": "Vui lòng chọn tuần ăn",
-  "Please login first": "Vui lòng đăng nhập"
+  "Please login first": "Vui lòng đăng nhập",
+  "My account": "Tài khoản của tôi",
+  "Orders": "Đơn mua",
+  "Logout": "Đăng xuất",
+  "General term": "Điều khoản chung"
 }

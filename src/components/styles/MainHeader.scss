@@ -1,6 +1,6 @@
 .Header {
   height: 110px;
-  background-color: #141414;
+  background-color: #3b3b3b;
   min-width: 600px;
 
   .main-content {
@@ -11,19 +11,44 @@
         justify-content: flex-end;
         color: #fff;
         font-size: 13px;
-        padding: 0px 0px 10px 0px;
+        padding: 0 0 10px 0;
 
-        .top-menu-item {
-          color: #fff;
-          padding: 0 0 0 20px;
-          cursor: pointer;
-          
-          &:hover {
-            text-decoration: underline;
+        .top-items {
+          display: flex;
+          flex-direction: row;
+
+          .top-menu-item {
+            color: #fff;
+            padding: 0 0 0 20px;
+            cursor: pointer;
+
+            &:hover {
+              text-decoration: underline;
+            }
+
+            .my-menu-btn {
+              background-color: #ec7533;
+              border: unset;
+            }
           }
-          .my-menu-btn {
-            background-color: #ec7533;
-            border: unset;
+
+          .account-menu {
+            .menu {
+              position: absolute;
+              z-index: 1;
+              padding: 0;
+              border-radius: 2px;
+              background-color: #ffffff;
+              color: #000;
+              li {
+                list-style-type: none;
+                padding: 5px 10px;
+                &:hover{
+                  background-color: #c0c0c0;
+                  cursor: pointer;
+                }
+              }
+            }
           }
         }
       }
@@ -49,7 +74,7 @@
 .link-separator {
   border-right: 1px solid hsla(0, 0%, 100%, 0.4);
   height: 0.8125rem;
-  padding: 0px 5px 0px 5px;
+  padding: 0 5px 0 5px;
 }
 
 .dot-notification {

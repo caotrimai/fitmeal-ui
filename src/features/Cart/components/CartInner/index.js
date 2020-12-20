@@ -110,7 +110,7 @@ function CartInner(props) {
     <div className="no-items">
       <div className="no-items-icon"/>
       <div className="text">{t('Your shopping cart is empty.')}</div>
-      <NavLink to="/my-menu" exact={true}><span className="top-menu-item" size="small">
+      <NavLink to="/" exact={true}><span className="continue-btn" size="small">
             <Button type="primary">{t('Continue shopping')}</Button></span>
       </NavLink>
     </div>

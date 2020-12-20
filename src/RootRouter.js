@@ -11,7 +11,6 @@ import PageFooter from 'components/Footer';
 import Cart from 'features/Cart';
 import PrivateRoute from 'features/common/Router/PrivateRoute';
 
-const Login = React.lazy(() => import('features/login/pages'));
 const LoginPage = React.lazy(() => import('features/login/pages/LoginPage'));
 const Register = React.lazy(() => import('features/register/pages'));
 const HomePage = React.lazy(() => import('features/HomePage/pages'));
@@ -33,11 +32,10 @@ function RootRouter(props) {
             <Col xs={24} sm={24} md={24} lg={24} xl={18} className="main-content">
               <Switch>
                 <Redirect from="/home" to="/"/>
-                <PrivateRoute exact path="/" component={HomePage}/>
-                <PrivateRoute path="/login" component={Login}/>
-                <PrivateRoute path="/register" component={Register}/>
-                <PrivateRoute path="/p" component={Product}/>
-
+                <Route exact path="/" component={HomePage}/>
+                <Route path="/register" component={Register}/>
+                <Route path="/p" component={Product}/>
+                
                 <PrivateRoute exact path="/login" component={LoginPage}/>
                 <PrivateRoute path="/my-menu" component={ProductMenu}/>
                 <PrivateRoute path="/cart" component={Cart}/>

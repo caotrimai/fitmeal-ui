@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {NavLink} from 'react-router-dom';
 import {useTranslation} from 'react-i18next';
 import {useSelector, useDispatch} from 'react-redux';
 
 import {setVisibleLoginForm} from 'features/login/reducer/loginSlice'
+import {logout} from 'app/reducers/accountSlice'
 import {setVisibleRegForm} from 'features/register/reducer/registerSlice'
 import Register from 'features/register/pages';
 import Login from 'features/login/pages';
@@ -26,6 +27,7 @@ function Header(props) {
   const visibleRegForm = useSelector(state => state.register.visibleRegForm);
   const visibleLoginForm = useSelector(state => state.login.visibleLoginForm);
   const cart = useSelector(state => state.cart);
+  const [isShowAccountMenu, setShowAccountMenu] = useState(false);
 
   const {t} = useTranslation();
   const {Search} = Input;
@@ -65,10 +67,24 @@ function Header(props) {
 
   const TopMenu = () => {
     return (
-      <div>
-        <label className="top-menu-item"><NotificationOutlined/> {t('Notification')}</label>
-        <label className="top-menu-item"><QuestionCircleOutlined/> {t('Help')}</label>
-        {user && <span className="top-menu-item" size="small"> <UserOutlined/> {user.phone}</span>}
+      <div className="top-items">
+        <div className="top-menu-item"><NotificationOutlined/> {t('Notification')}</div>
+        <div className="top-menu-item"><QuestionCircleOutlined/> {t('Help')}</div>
+        {
+          user &&
+          <div className="account-menu" onMouseEnter={() => setShowAccountMenu(true)}
+               onMouseLeave={() => setShowAccountMenu(false)}>
+            <span className="top-menu-item" size="small">
+              <UserOutlined/> {user.phone}
+            </span>
+            {isShowAccountMenu &&
+            <ul className="menu">
+              <li>{t('My account')}</li>
+              <li>{t('Orders')}</li>
+              <li onClick={() => dispatch(logout())}>{t('Logout')}</li>
+            </ul>}
+          </div>
+        }
         {user && <NavLink to="/my-menu" exact={true}><span className="top-menu-item" size="small">
             <Button className="my-menu-btn" type="primary">{t('My menu')}</Button></span>
         </NavLink>}
